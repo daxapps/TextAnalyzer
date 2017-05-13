@@ -2,42 +2,23 @@
 function textAnalyzer() {
 	$('button[type="submit"]').click( function(event) {
 		event.preventDefault();
-    wordsArray = $('#user-text').val().replace(/^[\s,.;]+/, "").replace(/[\s,.;]+$/, "").split(/[\s,.;]+/);
 
-    
-    // wordsArray.forEach(function(word) {
-    // 	var wordLength = [];
-    // 	wordLength.append(word.length)
-    // 	alert(wordLength)
-    // })
 
-    // total wowrd count
-    // alert(wordsArray.length);
+    	var wordsArray = $('#user-text').val().replace(/^[\s,.;]+/, "").replace(/[\s,.;]+$/, "").split(/[\s,.;]+/);
+    	var wordCount = wordsArray.length;
+    	var uniqueWordCount = jQuery.unique(wordsArray).length;
+ 		var wordLengthCounter = 0;
 
-    // Unique word count
-   	// alert(jQuery.unique(wordsArray).length);
+ 		for(var i = 0; i < wordsArray.length; i++){
+ 			wordLengthCounter += wordsArray[i].length;
+ 		}
+ 		var avgWordLength = wordLengthCounter/wordCount;
 
-	// alert(wordsArray.forEach(function(word){
-	// 	// var wordLength = word.length;
-	// 	var wordLengthTotal = 0;		
-	// 	wordLengthTotal += word.length;
-	// 	return wordLengthTotal;
-	// 	 })
-	// );
- 	// alert(wordLengthTotal);
- 	// alert(wordsArray.reduce());
-
- 		$(".js-word-count").text(wordsArray.length);
-		$(".js-unique").text(jQuery.unique(wordsArray).length);
-		// $(".js-avg-word-length").text(avgWordLength);
+ 		$(".js-word-count").text(wordCount);
+		$(".js-unique").text(uniqueWordCount);
+		$(".js-avg-word-length").text(avgWordLength.toFixed(2) + " characters");
 		$("dl").removeClass("hidden");
 	});
 }
-
-// function avgWordLength () {
-// 	$('button[type="submit"]').click( function() {
- 	
-//  });
-// }
 
 $(textAnalyzer);
