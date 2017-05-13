@@ -5,13 +5,9 @@ function textAnalyzer() {
 
 
     	var wordsArray = $('#user-text').val().replace(/^[\s,.;]+/, "").replace(/[\s,.;]+$/, "").split(/[\s,.;]+/);
+    	var wordLengthCounter = wordsArray.join("").length;
     	var wordCount = wordsArray.length;
     	var uniqueWordCount = jQuery.unique(wordsArray).length;
- 		var wordLengthCounter = 0;
-
- 		for(var i = 0; i < wordsArray.length; i++){
- 			wordLengthCounter += wordsArray[i].length;
- 		}
  		var avgWordLength = wordLengthCounter/wordCount;
 
  		$(".js-word-count").text(wordCount);
